@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
      "Readme.md",
      "VERSION",
      "lib/rspec/instafail.rb",
+     "rspec-instafail.gemspec",
      "spec/instafail_spec.rb",
      "spec/rspec_1/Gemfile",
      "spec/rspec_1/Gemfile.lock",
