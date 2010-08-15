@@ -1,5 +1,5 @@
 module RSpec
-  if defined? Spec
+  klass = if defined? Spec
     # rspec 1.x
     require 'spec/runner/formatter/progress_bar_formatter'
     class Instafail < Spec::Runner::Formatter::ProgressBarFormatter
@@ -10,6 +10,7 @@ module RSpec
         output.flush
       end
     end
+    Instafail
   else
     # rspec 2.x
     require 'rspec'
@@ -24,5 +25,8 @@ module RSpec
         output.flush
       end
     end
+    Instafail
   end
+
+  klass::VERSION = File.read( File.join(File.dirname(__FILE__),'..','..','VERSION') ).strip
 end
