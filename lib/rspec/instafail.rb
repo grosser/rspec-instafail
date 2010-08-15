@@ -9,7 +9,8 @@ module RSpec
     RSpec::Core::Formatters::ProgressFormatter
   end
 
-  class Instafail < klass
+  klass = Class.new(klass)
+  klass.class_eval do
     def example_failed(example, counter, failure)
       output.puts
       output.puts red("#{counter}: #{example_group.description} #{example.description}")
