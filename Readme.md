@@ -18,14 +18,19 @@ Output
 
 Install
 =======
-    script/plugin install git://github.com/grosser/rspec-instafail.git 
-
+As Gem:
+    gem install rspec-instafail
 
     # spec/spec.opts
+    --require rspec/instafail
     --format RSpec::Instafail
 
-    # spec/spec_helper.rb -- somewhere after loading environment
-    require 'rspec/instafail'
+As plugin:
+    script/plugin install git://github.com/grosser/rspec-instafail.git
+
+    # spec/spec.opts
+    --require vendor/plugins/rspec-instafail/lib/rspec/instafail
+    --format RSpec::Instafail
 
 Author
 ======
