@@ -21,16 +21,17 @@ Output
 Install
 =======
 As Gem:
-    gem install rspec-instafail
+    # Gemfile
+    gem rspec-instafail, :git => 'git://github.com/miwillhite/rspec-instafail.git'
 
-    # spec/spec.opts or .rspec for rspec 2
+    # spec/spec.opts (.rspec for rspec 2)
     --require rspec/instafail
     --format RSpec::Instafail
 
 As plugin:
-    script/plugin install git://github.com/grosser/rspec-instafail.git
+    rails plugin install git://github.com/miwillhite/rspec-instafail.git
 
-    # spec/spec.opts or .rspec for rspec 2
+    # spec/spec.opts (.rspec for rspec 2)
     --require vendor/plugins/rspec-instafail/lib/rspec/instafail
     --format RSpec::Instafail
 
