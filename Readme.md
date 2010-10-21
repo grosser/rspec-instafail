@@ -3,16 +3,18 @@ Show failing specs instantly. Show passing spec as green dots as usual.
 Output
 ======
     ....................................................*....
-    1: User as seller should be a seller when it has an activated shop
-     -> expected is_seller? to return false, got true
+    1) ApplicationController#sign_out_and_redirect with JSON should return JSON indicating success
+       Failure/Error: json_response = JSON.parse response.body
+       A JSON text must at least contain two octets!
+       # /Users/miwillhite/.rvm/gems/ruby-1.9.2-p0/gems/json_pure-1.4.6/lib/json/common.rb:146:in `initialize'
+       # /Users/miwillhite/.rvm/gems/ruby-1.9.2-p0/gems/json_pure-1.4.6/lib/json/common.rb:146:in `new'
+       # /Users/miwillhite/.rvm/gems/ruby-1.9.2-p0/gems/json_pure-1.4.6/lib/json/common.rb:146:in `parse'
+       # ./spec/controllers/application_controller_spec.rb:17:in `block (4 levels) in <top (required)>'
     ..................................................................
-    2: Product validations is invalid with too short title
-     -> expected not: == 1,
-         got:    1
-    ............................................................
+
     Finished in 650.095614 seconds
 
-    1680 examples, 2 failure, 1 pending
+    1680 examples, 1 failure, 1 pending
 
 
 
@@ -21,14 +23,14 @@ Install
 As Gem:
     gem install rspec-instafail
 
-    # spec/spec.opts
+    # spec/spec.opts or .rspec for rspec 2
     --require rspec/instafail
     --format RSpec::Instafail
 
 As plugin:
     script/plugin install git://github.com/grosser/rspec-instafail.git
 
-    # spec/spec.opts
+    # spec/spec.opts or .rspec for rspec 2
     --require vendor/plugins/rspec-instafail/lib/rspec/instafail
     --format RSpec::Instafail
 
