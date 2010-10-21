@@ -19,9 +19,15 @@ module RSpec
       def example_failed(example)
         @counter ||= 0
         @counter += 1
+        exception = example.metadata[:execution_result][:exception_encountered]
+        short_padding = '  '
+        padding = '     '
         output.puts
         output.puts red("#{@counter}: #{example.example_group.description} #{example.description}")
-        output.puts " -> #{example.metadata[:execution_result][:exception_encountered]}"
+        output.puts "#{short_padding}#{exception}"
+        format_backtrace(exception.backtrace, example).each do |backtrace_info|
+          output.puts grey("#{padding}# #{backtrace_info}")
+        end
         output.flush
       end
     end
