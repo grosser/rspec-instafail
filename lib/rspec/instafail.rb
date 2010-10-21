@@ -23,8 +23,8 @@ module RSpec
         short_padding = '  '
         padding = '     '
         output.puts
-        output.puts red("#{@counter}: #{example.example_group.description} #{example.description}")
-        output.puts "#{short_padding}#{exception}"
+        output.puts "#{short_padding}#{@counter}) #{example.full_description}"
+        output.puts "#{padding}#{red("Failure/Error:")} #{red(read_failed_line(exception, example).strip)}"
         format_backtrace(exception.backtrace, example).each do |backtrace_info|
           output.puts grey("#{padding}# #{backtrace_info}")
         end
