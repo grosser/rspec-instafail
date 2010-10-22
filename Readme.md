@@ -34,8 +34,13 @@ As plugin:
     --require vendor/plugins/rspec-instafail/lib/rspec/instafail
     --format RSpec::Instafail
 
-Author
-======
+Authors
+=======
+
+### [Contributors](http://github.com/grosser/rspec-instafail/contributors)
+ - [Matthew Willhite](http://github.com/miwillhite)
+
+
 [Michael Grosser](http://pragmatig.wordpress.com)  
 grosser.michael@gmail.com  
 Hereby placed under public domain, do what you want, just do not hold me accountable...
