@@ -1,6 +1,6 @@
 task :default => :spec
 require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new {|t| t.spec_opts = ['--color --backtrace']}
+Spec::Rake::SpecTask.new {|t| t.spec_opts = ['--color --backtrace --debug']}
 
 begin
   require 'jeweler'
