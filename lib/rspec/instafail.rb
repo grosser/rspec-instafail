@@ -28,7 +28,6 @@ module RSpec
     Instafail
   else
     # rspec 2.x
-    require 'rspec'
     require 'rspec/core/formatters/progress_formatter'
     class Instafail < RSpec::Core::Formatters::ProgressFormatter
       def example_failed(example)
