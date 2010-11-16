@@ -5,27 +5,22 @@ describe 'RSpec::Instafail' do
   1\\) x a
      expected: 2,
      got: 1 \\(using ==\\)
-     # \\.\\/a_test\\.rb:5:
+     # (\\.\\/)?a_test\\.rb:5:(in `block \\(2 levels\\) in <top \\(required\\)>')?
 \\.\\.\\*\\.
 
 Pending:
 
 x d \\(TODO\\)
-\\.\\/a_test\\.rb:14
+(\\.\\/)?a_test\\.rb:14(\:in `block in <top \\(required\\)>')?
 
 1\\)
 'x a' FAILED
 expected: 2,
      got: 1 \\(using ==\\)
-\\./a_test\\.rb:5:
-
-Finished in \\d\\.\\d+ seconds
-
-5 examples, 1 failure, 1 pending
+(\\./)?a_test\\.rb:5:(in `block \\(2 levels\\) in <top \\(required\\)>')?
 EXP
 
     output.should =~ Regexp.new(expected_output, 'x')
-
   end
 
   it "works correctly with RSpec 2.x (but backtrace might be broken)" do
