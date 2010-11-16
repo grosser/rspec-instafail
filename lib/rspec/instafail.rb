@@ -1,5 +1,25 @@
 module RSpec
-  klass = if defined? Spec
+  begin
+    # rspec 2.x
+    require 'rspec/core/formatters/progress_formatter'
+    class Instafail < RSpec::Core::Formatters::ProgressFormatter
+      def example_failed(example)
+        @counter ||= 0
+        @counter += 1
+        exception = example.metadata[:execution_result][:exception_encountered]
+        short_padding = '  '
+        padding = '     '
+        output.puts
+        output.puts "#{short_padding}#{@counter}) #{example.full_description}"
+        output.puts "#{padding}#{red("Failure/Error:")} #{red(read_failed_line(exception, example).strip)}"
+        output.puts "#{padding}#{red(exception)}"
+        format_backtrace(exception.backtrace, example).each do |backtrace_info|
+          output.puts grey("#{padding}# #{backtrace_info}")
+        end
+        output.flush
+      end
+    end
+  rescue LoadError => try_rspec_1
     # rspec 1.x
     require 'spec/runner/formatter/progress_bar_formatter'
     class Instafail < Spec::Runner::Formatter::ProgressBarFormatter
@@ -25,29 +45,7 @@ module RSpec
         colour(text, "\e[90m")
       end
     end
-    Instafail
-  else
-    # rspec 2.x
-    require 'rspec/core/formatters/progress_formatter'
-    class Instafail < RSpec::Core::Formatters::ProgressFormatter
-      def example_failed(example)
-        @counter ||= 0
-        @counter += 1
-        exception = example.metadata[:execution_result][:exception_encountered]
-        short_padding = '  '
-        padding = '     '
-        output.puts
-        output.puts "#{short_padding}#{@counter}) #{example.full_description}"
-        output.puts "#{padding}#{red("Failure/Error:")} #{red(read_failed_line(exception, example).strip)}"
-        output.puts "#{padding}#{red(exception)}"
-        format_backtrace(exception.backtrace, example).each do |backtrace_info|
-          output.puts grey("#{padding}# #{backtrace_info}")
-        end
-        output.flush
-      end
-    end
-    Instafail
   end
 
-  klass::VERSION = File.read( File.join(File.dirname(__FILE__),'..','..','VERSION') ).strip
+  Instafail::VERSION = File.read( File.join(File.dirname(__FILE__),'..','..','VERSION') ).strip
 end
