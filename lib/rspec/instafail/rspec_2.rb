@@ -1,3 +1,5 @@
+require 'rspec/core/formatters/progress_formatter'
+
 module RSpec
   class Instafail < RSpec::Core::Formatters::ProgressFormatter
     def example_failed(example)
