@@ -11,7 +11,7 @@ module RSpec
         output.puts red("#{short_padding}#{counter}) #{example_group.description} #{example.description}")
         output.puts "#{padding}#{red(failure.exception)}"
 
-        format_backtrace(failure.exception.backtrace).each do |backtrace_info|
+        [*format_backtrace(failure.exception.backtrace)].each do |backtrace_info|
           output.puts insta_gray("#{padding}# #{backtrace_info.strip}")
         end
 
