@@ -5,17 +5,19 @@
 
 Gem::Specification.new do |s|
   s.name = %q{rspec-instafail}
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Grosser"]
-  s.date = %q{2010-11-15}
+  s.date = %q{2010-11-17}
   s.email = %q{grosser.michael@gmail.com}
   s.files = [
     "Rakefile",
      "Readme.md",
      "VERSION",
      "lib/rspec/instafail.rb",
+     "lib/rspec/instafail/rspec_1.rb",
+     "lib/rspec/instafail/rspec_2.rb",
      "rspec-instafail.gemspec",
      "spec/instafail_spec.rb",
      "spec/rspec_1/Gemfile",
