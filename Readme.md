@@ -40,6 +40,7 @@ Authors
 ### [Contributors](http://github.com/grosser/rspec-instafail/contributors)
  - [Matthew Willhite](http://github.com/miwillhite)
  - [Jeff Kreeftmeijer](http://jeffkreeftmeijer.com)
+ - [Steve Tooke](http://tooky.github.com)
 
 
 [Michael Grosser](http://pragmatig.wordpress.com)  
