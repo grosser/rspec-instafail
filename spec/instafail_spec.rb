@@ -23,37 +23,44 @@ EXP
     output.should =~ Regexp.new(expected_output, 'x')
   end
 
-  it "works correctly with RSpec 2.x (but backtrace might be broken)" do
-    output = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color`
-    expected = <<EXP
-  1\\) x a
+  context 'Rspec 2.x' do
+    before(:all)do
+      @rspec_result = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color`
+    end
+    before do
+      @output = @rspec_result.dup
+    end
+    it "outputs logical failures" do
+      expected = <<EXP
+  1\\) x fails logically
      Failure\\/Error: 1\\.should == 2
      expected: 2,
      got: 1 \\(using ==\\)
 EXP
-    output.should =~ Regexp.new(expected, 'x')
+      @output.should =~ Regexp.new(expected, 'x')
 
-    output.should include('/a_test.rb:5')
+      @output.should include('/a_test.rb:5')
+    end
+    it 'outputs the remaining passing specs and the ending block' do
 
-    expected = <<EXP
+      expected = <<EXP
 \\.\\.\\*\\.
 
 Pending:
-  x d
+  x pends
     # No reason given
     # \\./a_test\\.rb:14
 
 Finished in \\d\\.\\d+ seconds
 5 examples, 1 failure, 1 pending
 EXP
-    output.should =~ Regexp.new(expected, 'x')
+      @output.should =~ Regexp.new(expected, 'x')
 
-  end
+    end
 
-  it "works correctly with RSpec 2.x" do
-    pending 'the backtrace for the error is always absolute on my machine'
-    output = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color`
-    expected_output = <<EXP
+    it "works correctly with RSpec 2.x" do
+      pending 'the backtrace for the error is always absolute on my machine'
+      expected_output = <<EXP
   1\\) x a
      Failure\\/Error: 1\\.should == 2
      expected: 2,
@@ -70,8 +77,9 @@ Finished in \\d\\.\\d+ seconds
 5 examples, 1 failure, 1 pending
 EXP
 
-    output.should =~ Regexp.new(expected_output, 'x')
+      @output.should =~ Regexp.new(expected_output, 'x')
 
+    end
   end
 end
 
