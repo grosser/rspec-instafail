@@ -41,6 +41,7 @@ Authors
  - [Matthew Willhite](http://github.com/miwillhite)
  - [Jeff Kreeftmeijer](http://jeffkreeftmeijer.com)
  - [Steve Tooke](http://tooky.github.com)
+ - [Josh Ellithorpe](https://github.com/zquestz)
 
 
 [Michael Grosser](http://pragmatig.wordpress.com)  
