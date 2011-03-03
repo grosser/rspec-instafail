@@ -57,7 +57,8 @@ EXP
       expected = <<EXP
   3\\) x raises a hidden error
      Failure\\/Error: raise error
-     There is an error in this error.
+     There is an error in this error\\.
+     There is no error in this error\\.
 EXP
       @output.should =~ Regexp.new(expected, 'x')
     end

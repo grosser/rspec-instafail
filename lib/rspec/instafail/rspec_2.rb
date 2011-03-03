@@ -15,6 +15,9 @@ module RSpec
       output.puts "#{short_padding}#{@counter}) #{example.full_description}"
       output.puts "#{padding}#{red("Failure/Error:")} #{red(read_failed_line(exception, example).strip)}"
       output.puts "#{padding}#{red(exception)}"
+      if exception.respond_to?(:original_exception)
+        output.puts "#{padding}#{red(exception.original_exception)}"
+      end
       format_backtrace(exception.backtrace, example).each do |backtrace_info|
         output.puts grey("#{padding}# #{backtrace_info}")
       end
