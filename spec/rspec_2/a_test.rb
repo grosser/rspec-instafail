@@ -16,6 +16,16 @@ describe 'x' do
     raise
   end
 
+  it 'raises a simple error' do
+    raise 'shallow failure'
+  end
+
+  it 'raises a hidden error' do
+    error = ExceptionWrappingException.new('There is an error in this error.')
+    error.original_exception = RuntimeError.new('There is no error in this error.')
+    raise error
+  end
+
   it 'e' do
   end
 end

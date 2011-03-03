@@ -30,6 +30,7 @@ EXP
     before do
       @output = @rspec_result.dup
     end
+
     it "outputs logical failures" do
       expected = <<EXP
   1\\) x fails logically
@@ -41,10 +42,28 @@ EXP
 
       @output.should include('/a_test.rb:5')
     end
-    it 'outputs the remaining passing specs and the ending block' do
 
+    it 'outputs a simple error' do
       expected = <<EXP
-\\.\\.\\*\\.
+\\.\\.\\*
+  2\\) x raises a simple error
+     Failure\\/Error: raise 'shallow failure'
+     shallow failure
+EXP
+      @output.should =~ Regexp.new(expected, 'x')
+    end
+
+    it 'outputs an error which responds to original_exception' do
+      expected = <<EXP
+  3\\) x raises a hidden error
+     Failure\\/Error: raise error
+     There is an error in this error.
+EXP
+      @output.should =~ Regexp.new(expected, 'x')
+    end
+    it 'outputs the remaining passing specs and the ending block' do
+      expected = <<EXP
+\\.
 
 Pending:
   x pends
@@ -52,10 +71,10 @@ Pending:
     # \\./a_test\\.rb:14
 
 Finished in \\d\\.\\d+ seconds
-5 examples, 1 failure, 1 pending
+7 examples, 3 failures, 1 pending
 EXP
+      puts @output
       @output.should =~ Regexp.new(expected, 'x')
-
     end
 
     it "works correctly with RSpec 2.x" do
@@ -74,11 +93,9 @@ Pending:
     # \\./a_test\\.rb:14
 
 Finished in \\d\\.\\d+ seconds
-5 examples, 1 failure, 1 pending
+7 examples, 3 failures, 1 pending
 EXP
-
       @output.should =~ Regexp.new(expected_output, 'x')
-
     end
   end
 end
