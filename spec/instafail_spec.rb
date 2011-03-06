@@ -74,7 +74,6 @@ Pending:
 Finished in \\d\\.\\d+ seconds
 7 examples, 3 failures, 1 pending
 EXP
-      puts @output
       @output.should =~ Regexp.new(expected, 'x')
     end
 
