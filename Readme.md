@@ -42,8 +42,8 @@ Authors
  - [Jeff Kreeftmeijer](http://jeffkreeftmeijer.com)
  - [Steve Tooke](http://tooky.github.com)
  - [Josh Ellithorpe](https://github.com/zquestz)
+ - [Raphael Sofaer](https://github.com/rsofaer)
 
-
-[Michael Grosser](http://pragmatig.wordpress.com)  
-grosser.michael@gmail.com  
+[Michael Grosser](http://grosser.it)<br/>
+michael@grosser.it<br/>
 Hereby placed under public domain, do what you want, just do not hold me accountable...
