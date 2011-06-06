@@ -19,7 +19,7 @@ module RSpec
         output.puts "#{padding}#{red(exception.original_exception)}"
       end
       format_backtrace(exception.backtrace, example).each do |backtrace_info|
-        output.puts grey("#{padding}# #{backtrace_info}")
+        output.puts cyan("#{padding}# #{backtrace_info}")
       end
       output.flush
     end
