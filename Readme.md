@@ -43,6 +43,7 @@ Authors
  - [Steve Tooke](http://tooky.github.com)
  - [Josh Ellithorpe](https://github.com/zquestz)
  - [Raphael Sofaer](https://github.com/rsofaer)
+ - [Mike Mazur](https://github.com/mikem)
 
 [Michael Grosser](http://grosser.it)<br/>
 michael@grosser.it<br/>
