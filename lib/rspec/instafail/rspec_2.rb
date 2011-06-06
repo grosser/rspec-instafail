@@ -19,7 +19,8 @@ module RSpec
         output.puts "#{padding}#{red(exception.original_exception)}"
       end
       format_backtrace(exception.backtrace, example).each do |backtrace_info|
-        output.puts cyan("#{padding}# #{backtrace_info}")
+        color = defined?(cyan) ? :cyan : :grey # cyan was added in rspec 2.6
+        output.puts send(color, "#{padding}# #{backtrace_info}")
       end
       output.flush
     end
