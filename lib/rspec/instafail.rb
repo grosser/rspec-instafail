@@ -8,5 +8,5 @@ module RSpec
     require "#{lib}/rspec/instafail/rspec_1"
   end
 
-  Instafail::VERSION = File.read( File.join(File.dirname(__FILE__),'..','..','VERSION') ).strip
+  require 'rspec/instafail/version'
 end

@@ -1,20 +1,23 @@
-task :default => :spec
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new {|t| t.spec_opts = ['--color --backtrace --debug']}
+require "bundler"
+Bundler::GemHelper.install_tasks
 
-begin
-  require 'jeweler'
-  project_name = 'rspec-instafail'
+task :default do
+  sh "cd spec/rspec_1 && (bundle || bundle install) > /dev/null"
+  sh "cd spec/rspec_2 && (bundle || bundle install) > /dev/null"
+  sh "rspec spec/"
+end
 
-  Jeweler::Tasks.new do |gem|
-    gem.name = project_name
-    gem.summary = "Show failing specs instantly"
-    gem.email = "grosser.michael@gmail.com"
-    gem.homepage = "http://github.com/grosser/#{project_name}"
-    gem.authors = ["Michael Grosser"]
-  end
+rule /^version:bump:.*/ do |t|
+  file = 'lib/rspec/instafail/version.rb'
 
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler, or one of its dependencies, is not available. Install it with: gem install jeweler"
+  sh "git status | grep 'nothing to commit'" # ensure we are not dirty
+  index = ['major', 'minor','patch'].index(t.name.split(':').last)
+
+  version_file = File.read(file)
+  old_version, *version_parts = version_file.match(/(\d+)\.(\d+)\.(\d+)/).to_a
+  version_parts[index] = version_parts[index].to_i + 1
+  new_version = version_parts * '.'
+  File.open(file,'w'){|f| f.write(version_file.sub(old_version, new_version)) }
+
+  sh "git add #{file} && git commit -m 'bump version to #{new_version}'"
 end
