@@ -1,30 +1,28 @@
 describe 'RSpec::Instafail' do
-  it "works correctly with RSpec 1.x" do
-    output = `cd spec/rspec_1 && bundle exec spec a_test.rb --format RSpec::Instafail`
-    expected_output = <<EXP
-  1\\) x a
-     expected: 2,
-     got: 1 \\(using ==\\)
-     # (\\.\\/)?a_test\\.rb:5:(in `block \\(2 levels\\) in <top \\(required\\)>')?
-\\.\\.\\*\\.
+  context "RSpec 1.x" do
+    before :all do
+      @rspec_result = `cd spec/rspec_1 && bundle exec spec a_test.rb --format RSpec::Instafail`
+    end
 
-Pending:
+    before do
+      @output = @rspec_result.dup
+    end
 
-x d \\(TODO\\)
-(\\.\\/)?a_test\\.rb:14(\:in `block in <top \\(required\\)>')?
+    it "outputs failures at start of output" do
+      @output.should =~ /^\s*1\)\s*'x fails logically'/m
+    end
 
-1\\)
-'x a' FAILED
-expected: 2,
-     got: 1 \\(using ==\\)
-(\\./)?a_test\\.rb:5:(in `block \\(2 levels\\) in <top \\(required\\)>')?
-EXP
+    it 'outputs errors in middle of output' do
+      @output.should =~ /\.\.\*\s*2\)\s*RuntimeError in 'x raises a simple error'/m
+    end
 
-    output.should =~ Regexp.new(expected_output, 'x')
+    it 'outputs the the ending block' do
+      @output.should =~ /Finished in \d\.\d+ seconds\s*7 examples, 3 failures, 1 pending/
+    end
   end
 
   context 'Rspec 2.x' do
-    before(:all)do
+    before :all do
       @rspec_result = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color`
     end
 
