@@ -24,7 +24,8 @@ As Gem:
     gem install rspec-instafail
 
     # spec/spec.opts (.rspec for rspec 2)
-    --require rspec/instafail
+    --require rspec/instafail/rspec_1 (for RSpec 1)
+    --require rspec/instafail/rspec_2 (for RSpec 2)
     --format RSpec::Instafail
 
 As plugin:
