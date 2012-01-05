@@ -9,4 +9,6 @@ Gem::Specification.new name, RSpec::Instafail::VERSION do |s|
   s.homepage = "http://github.com/grosser/#{name}"
   s.files = `git ls-files`.split("\n")
   s.license = "MIT"
+
+  s.add_dependency 'rspec-core', '>= 2.8.0'
 end
