@@ -45,6 +45,7 @@ Authors
  - [Raphael Sofaer](https://github.com/rsofaer)
  - [Mike Mazur](https://github.com/mikem)
  - [vernonR2](https://github.com/vernonR2)
+ - [Olek Janiszewski](https://github.com/exviva)
 
 [Michael Grosser](http://grosser.it)<br/>
 michael@grosser.it<br/>
