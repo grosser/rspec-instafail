@@ -8,8 +8,20 @@ module RSpec
 
       # do what BaseTextFormatter#dump_failures would do
       index = failed_examples.size - 1
-      dump_pending_example_fixed(example, index) || dump_failure(example, index)
+      _dump_pending_example(example, index)
       dump_backtrace(example)
+    end
+
+    def _dump_pending_example(example, index)
+      if defined? pending_fixed? # > 2.8
+        if pending_fixed?(example)
+          dump_pending_fixed(example, index)
+        else
+          dump_failure(example, index)
+        end
+      else
+        dump_pending_example_fixed(example, index) || dump_failure(example, index)
+      end
     end
   end
 end
