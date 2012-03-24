@@ -39,7 +39,12 @@ describe 'RSpec::Instafail' do
     end
 
     it 'outputs the the ending block' do
-      @output.should =~ /Finished in \d\.\d+ seconds\s*7 examples, 3 failures, 1 pending/
+      @output.should =~ /Finished in \d\.\d+ seconds\s*9 examples, 4 failures, 1 pending/
+    end
+
+    it "does not add ancestors after failures" do
+      @output.should include('ANCESTORS:2')
+      @output.should_not include('ANCESTORS:3')
     end
   end
 end

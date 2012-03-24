@@ -28,6 +28,19 @@ describe 'x' do
 
   it 'e' do
   end
+
+  context "ancestors" do
+    after do
+      puts "ANCESTORS:#{example.example_group.ancestors.size}"
+    end
+
+    it "does not add ancestors on failure" do
+      raise "BAM"
+    end
+
+    it "does not add ancestors on failure" do
+    end
+  end
 end
 
 class ExceptionWrappingException < RuntimeError
