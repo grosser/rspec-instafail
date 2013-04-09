@@ -1,7 +1,9 @@
 describe 'RSpec::Instafail' do
   context "RSpec 1.x" do
     before :all do
-      @rspec_result = `cd spec/rspec_1 && bundle exec spec a_test.rb --format RSpec::Instafail`
+      Bundler.with_clean_env do
+        @rspec_result = `cd spec/rspec_1 && bundle exec spec a_test.rb --format RSpec::Instafail`
+      end
     end
 
     before do
@@ -23,7 +25,9 @@ describe 'RSpec::Instafail' do
 
   context 'Rspec 2.x' do
     before :all do
-      @rspec_result = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color`
+      Bundler.with_clean_env do
+        @rspec_result = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color`
+      end
     end
 
     before do
