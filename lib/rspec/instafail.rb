@@ -4,10 +4,14 @@ module RSpec
   lib = File.expand_path(File.dirname(File.dirname(__FILE__)))
   $LOAD_PATH << lib unless $LOAD_PATH.include?(lib)
 
-  begin
-    require "rspec/instafail/rspec_2"
-  rescue LoadError # try rspec 1
-    require "rspec/instafail/rspec_1"
+  if defined?(::RSpec::Core) && ::RSpec::Core::Version::STRING >= '3.0.0'
+    require "rspec/instafail/rspec_3"
+  else
+    begin
+      require "rspec/instafail/rspec_2"
+    rescue LoadError # try rspec 1
+      require "rspec/instafail/rspec_1"
+    end
   end
 
   require 'rspec/instafail/version'
