@@ -51,5 +51,33 @@ describe 'RSpec::Instafail' do
       @output.should_not include('ANCESTORS:3')
     end
   end
-end
 
+  context 'Rspec 3.x' do
+    before :all do
+      Bundler.with_clean_env do
+        @rspec_result = `cd spec/rspec_3 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color --order default`
+      end
+    end
+
+    before do
+      @output = @rspec_result.dup
+    end
+
+    it "outputs failures at start of output" do
+      @output.should =~ /^\s+1\) x fails logically/m
+    end
+
+    it 'outputs errors in middle of output' do
+      @output.should =~ /\.\.\*\s*2\) x raises a simple error/m
+    end
+
+    it 'outputs the the ending block' do
+      @output.should =~ /Finished in \d\.\d+ seconds.*\s*9 examples, 4 failures, 1 pending/
+    end
+
+    it "does not add ancestors after failures" do
+      @output.should include('ANCESTORS:18')
+      @output.should_not include('ANCESTORS:19')
+    end
+  end
+end
