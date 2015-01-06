@@ -12,7 +12,7 @@ describe 'x' do
   end
 
   it 'pends' do
-    pending
+    skip
     raise
   end
 
@@ -30,7 +30,7 @@ describe 'x' do
   end
 
   context "ancestors" do
-    after do
+    after do |example|
       puts "ANCESTORS:#{example.example_group.ancestors.size}"
     end
 

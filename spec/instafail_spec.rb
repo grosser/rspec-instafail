@@ -1,3 +1,8 @@
+RSpec.configure do |config|
+  config.expect_with(:rspec) { |c| c.syntax = :should }
+  config.mock_with(:rspec) { |c| c.syntax = :should }
+end
+
 describe 'RSpec::Instafail' do
   context "RSpec 1.x" do
     before :all do
@@ -26,7 +31,7 @@ describe 'RSpec::Instafail' do
   context 'Rspec 2.x' do
     before :all do
       Bundler.with_clean_env do
-        @rspec_result = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color --order default`
+        @rspec_result = `cd spec/rspec_2 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color --order defined`
       end
     end
 
@@ -47,15 +52,15 @@ describe 'RSpec::Instafail' do
     end
 
     it "does not add ancestors after failures" do
-      @output.should include('ANCESTORS:2')
-      @output.should_not include('ANCESTORS:3')
+      @output.should include('ANCESTORS:17')
+      @output.should_not include('ANCESTORS:18')
     end
   end
 
   context 'Rspec 3.x' do
     before :all do
       Bundler.with_clean_env do
-        @rspec_result = `cd spec/rspec_3 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color --order default`
+        @rspec_result = `cd spec/rspec_3 && bundle exec rspec a_test.rb --require ../../lib/rspec/instafail --format RSpec::Instafail --no-color --order defined`
       end
     end
 
