@@ -1,15 +1,12 @@
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 name = 'rspec-instafail'
+require './lib/rspec/instafail/version'
 
-# needs rspec installed to load the version, so let's avoid this mess
-version = File.read("lib/rspec/instafail/version.rb")[/\d+\.\d+\.\d+/]
-
-Gem::Specification.new name, version do |s|
+Gem::Specification.new name, RSpec::Instafail::VERSION do |s|
   s.summary = "Show failing specs instantly"
   s.authors = ["Michael Grosser"]
   s.email = "michael@grosser.it"
-  s.homepage = "http://github.com/grosser/#{name}"
-  s.files = `git ls-files`.split("\n")
+  s.homepage = "https://github.com/grosser/#{name}"
+  s.files = `git ls-files lib Readme.md`.split("\n")
   s.license = "MIT"
   s.add_runtime_dependency "rspec"
 end
