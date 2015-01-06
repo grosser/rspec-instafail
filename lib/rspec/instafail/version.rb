@@ -1,2 +1,5 @@
-require 'rspec/instafail'
-RSpec::Instafail::VERSION = '0.2.5'
+module RSpec
+  class Instafail
+    VERSION = '0.2.5'
+  end
+end
