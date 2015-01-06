@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rspec-instafail (0.2.5)
+    rspec-instafail (0.2.6)
       rspec
 
 GEM
