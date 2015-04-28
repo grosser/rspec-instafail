@@ -6,13 +6,12 @@ module RSpec
 
     def initialize(output)
       super
-      @output = output
       @failed_examples = []
     end
 
     def example_failed(failure)
       @failed_examples << failure.example
-      @output.puts failure.fully_formatted(@failed_examples.size)
+      output.puts failure.fully_formatted(@failed_examples.size)
     end
   end
 end
