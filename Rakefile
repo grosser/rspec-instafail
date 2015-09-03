@@ -8,5 +8,5 @@ task :default do
     sh "cd spec/rspec_2 && (bundle check || bundle) > /dev/null"
     sh "cd spec/rspec_3 && (bundle check || bundle) > /dev/null"
   end
-  sh "rspec spec/"
+  sh "rspec spec/instafail_spec.rb"
 end
