@@ -1,3 +1,7 @@
+# rspec-instafail
+[![Gem Version](https://badge.fury.io/rb/rspec-instafail.svg)](https://rubygems.org/gems/rspec-instafail)
+[![Build Status](https://travis-ci.org/grosser/rspec-instafail.svg)](https://travis-ci.org/grosser/rspec-instafail)
+
 Show failing specs instantly. Show passing spec as green dots as usual.
 
 Output
@@ -48,6 +52,4 @@ Authors
 
 [Michael Grosser](http://grosser.it)<br/>
 michael@grosser.it<br/>
-License: MIT<br/>
-[![Build Status](https://travis-ci.org/grosser/rspec-instafail.png)](https://travis-ci.org/grosser/rspec-instafail)
-
+License: MIT
