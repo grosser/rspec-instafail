@@ -36,6 +36,11 @@ gem install rspec-instafail
 --format RSpec::Instafail
 ```
 
+Alternatives
+============
+
+Use built-in `--fail-fast`
+
 Authors
 =======
 
