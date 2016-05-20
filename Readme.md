@@ -34,6 +34,7 @@ gem install rspec-instafail
 # .rspec
 --require rspec/instafail
 --format RSpec::Instafail
+--format progress # to keep dots appear
 ```
 
 Alternatives
