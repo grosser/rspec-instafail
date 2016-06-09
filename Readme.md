@@ -4,6 +4,8 @@
 
 Show failing specs instantly. Show passing spec as green dots as usual.
 
+**Upgrading to 1.0 ?** add `--format progress`
+
 Output
 ======
 
