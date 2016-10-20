@@ -30,13 +30,25 @@ Finished in 650.095614 seconds
 Install
 =======
 
+Rspec 2.x and higher
+--------------------
+
 ```Bash
-gem install rspec-instafail
+$ gem install rspec-instafail
 
 # .rspec
 --require rspec/instafail
 --format RSpec::Instafail
 --format progress # to keep dots appear
+```
+
+Rspec 1.x
+---------
+
+```Bash
+$ gem install rspec-instafail -v 0.4.0
+
+$ spec --require rspec/instafail --format RSpec::Instafail spec
 ```
 
 Alternatives
