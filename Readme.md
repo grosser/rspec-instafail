@@ -34,7 +34,7 @@ Rspec 2.x and higher
 --------------------
 
 ```Bash
-$ gem install rspec-instafail
+gem install rspec-instafail
 
 # .rspec
 --require rspec/instafail
@@ -45,11 +45,7 @@ $ gem install rspec-instafail
 Rspec 1.x
 ---------
 
-```Bash
-$ gem install rspec-instafail -v 0.4.0
-
-$ spec --require rspec/instafail --format RSpec::Instafail spec
-```
+You have to use the version 0.4.0 with this version of Rspec. See the [0.4.0 branch](https://github.com/grosser/rspec-instafail/tree/v0.4).
 
 Alternatives
 ============
