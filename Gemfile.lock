@@ -31,6 +31,3 @@ DEPENDENCIES
   bump
   rake
   rspec-instafail!
-
-BUNDLED WITH
-   1.12.5
